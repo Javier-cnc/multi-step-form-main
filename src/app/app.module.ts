@@ -8,6 +8,7 @@ import { PlanPageComponent } from './components/plan-page/plan-page.component';
 import { AddsPageComponent } from './components/adds-page/adds-page.component';
 import { SummaryPageComponent } from './components/summary-page/summary-page.component';
 import { RouterModule } from '@angular/router';
+import { NavigationPanelComponent } from './components/navigation-panel/navigation-panel.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { RouterModule } from '@angular/router';
     PlanPageComponent,
     AddsPageComponent,
     SummaryPageComponent,
+    NavigationPanelComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, RouterModule],
   providers: [],

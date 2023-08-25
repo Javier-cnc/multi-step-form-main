@@ -1,6 +1,29 @@
-@use "../../styles" as v
-@use '../../_variables' as p
+@use '../../variables/_colors' as c
 
-.placeholder
-  background-color: v.$red-color
-  border: 3px solid p.$testing-color
+.global-container
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100vw
+  height: 100vh
+
+.dialog-container
+  background-color: c.$white-color
+  padding: 20px
+  border-radius: 10px
+  width: 700px
+  height: 500px
+  display: flex
+  flex-direction: row
+
+.navigation-panel-container
+  width: 250px
+  position: relative
+  background-image: url('/assets/images/bg-sidebar-desktop.svg')
+  background-size: 100%
+  overflow: hidden
+  background-repeat: no-repeat
+
+.page-container
+  flex-grow: 1
+  background-color: c.$gray-color

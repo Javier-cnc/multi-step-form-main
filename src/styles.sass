@@ -1,10 +1,14 @@
-// ==== Global variables ====
-// Colors collection for the app
-$verylight-blue-color : #eef5ff
-$light-blue-color: #b8deff
-$blue-color: #4a3aff
-$dark-blue-color : #184890
-$verydark-blue-color: #092b51
-$gray-color: #999a9f
-$white-color: white
-$red-color: #f52b45
+@use './variables/_colors' as c
+
+body
+  background-color: c.$light-blue-color
+  overflow: hidden
+
+
+@font-face
+  font-family: myFont
+  src: url('assets/fonts/Ubuntu-Regular.ttf')
+
+:root
+  font-family: myFont
+

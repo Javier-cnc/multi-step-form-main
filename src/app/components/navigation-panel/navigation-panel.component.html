@@ -1,0 +1,14 @@
+<div class="global-container">
+  <div class="navigation-panel-item" *ngFor="let item of navigationItems">
+    <span
+      class="number-indicator"
+      [routerLink]="item.url"
+      routerLinkActive="selected"
+      >{{ item.number }}</span
+    >
+    <div class="description-container">
+      <span class="step-number">{{ item.stepName }}</span>
+      <span class="page-name">{{ item.pageName }}</span>
+    </div>
+  </div>
+</div>
