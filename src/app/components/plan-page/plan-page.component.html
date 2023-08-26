@@ -3,23 +3,33 @@
 <div class="selection-panel">
   <div
     class="selection-item"
-    [class.selected]="selectedPlan === item.name"
-    (click)="selectedPlan = item.name"
+    [class.selected]="selectedPlan.name === item.name"
+    (click)="setSelectedPlan(item)"
     *ngFor="let item of options"
   >
     <div class="icon-container">
       <img [attr.src]="item.iconAddress" />
     </div>
     <span class="option-name">{{ item.name }}</span>
-    <span class="option-price">${{ item.price }}/mo</span>
-    <span class="month-quantity" [class.collapse]="!isYearly"
+    <span class="option-price"
+      >${{
+        selectedPlan.isYearly ? item.pricePerYear : item.pricePerMonth
+      }}/mo</span
+    >
+    <span class="month-quantity" [class.collapse]="!selectedPlan.isYearly"
       >{{ item.freeMonthQuantity }} months free</span
     >
   </div>
 </div>
 
 <div class="switch-button-panel">
-  <span class="switch-option" [class.selected]="!isYearly">Monthly</span>
-  <button (click)="isYearly = !isYearly">placeholder</button>
-  <span class="switch-option" [class.selected]="isYearly">Yearly</span>
+  <span class="switch-option" [class.selected]="!selectedPlan.isYearly"
+    >Monthly</span
+  >
+  <button (click)="selectedPlan.isYearly = !selectedPlan.isYearly">
+    placeholder
+  </button>
+  <span class="switch-option" [class.selected]="selectedPlan.isYearly"
+    >Yearly</span
+  >
 </div>

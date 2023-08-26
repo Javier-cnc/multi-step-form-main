@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { urls } from 'src/app/models/globalVariables.model';
 import { IPage } from 'src/app/models/page.model';
+import { Add, SubscriptionInfo } from 'src/app/models/subscriptionInfo.model';
 import { ApplicationBackgroundService } from 'src/app/services/application-background.service';
 
 @Component({
@@ -12,34 +13,40 @@ import { ApplicationBackgroundService } from 'src/app/services/application-backg
 export class AddsPageComponent implements IPage {
   private terminated: ReplaySubject<void> = new ReplaySubject<void>();
 
+  subscriptionInfo: SubscriptionInfo;
+
   // define the available options for the adds to be selected
   options: {
     name: string;
     selected: boolean;
     nameText: string;
     description: string;
-    price: number;
+    pricePerMonth: number;
+    pricePerYear: number;
   }[] = [
     {
       name: 'onlineService',
       selected: false,
       nameText: 'Online service',
       description: 'Access to multiplayer games',
-      price: 1,
+      pricePerMonth: 1,
+      pricePerYear: 10,
     },
     {
       name: 'largerStorage',
       selected: false,
       nameText: 'Larger storage',
       description: 'Extra 1TB of cloud save',
-      price: 2,
+      pricePerMonth: 2,
+      pricePerYear: 20,
     },
     {
       name: 'customizableProfile',
       selected: false,
       nameText: 'Customizable profile',
       description: 'Custom theme on your profile',
-      price: 2,
+      pricePerMonth: 2,
+      pricePerYear: 20,
     },
   ];
 
@@ -64,6 +71,8 @@ export class AddsPageComponent implements IPage {
         option.selected = true;
       }
     });
+
+    this.subscriptionInfo = this.appService.SubscriptionInfo;
   }
 
   validate(): boolean {
@@ -77,13 +86,16 @@ export class AddsPageComponent implements IPage {
 
     // extract just name and price information of the selected adds options
     // and save those values
-    this.appService.SubscriptionInfo.Adds = selectedOptions.map((element) => {
-      let objectToReturn: any = {};
+    var adds = selectedOptions.map((element) => {
+      let objectToReturn: Add = new Add();
       objectToReturn.name = element.name;
-      objectToReturn.price = element.price;
+      objectToReturn.pricePerYear = element.pricePerYear;
+      objectToReturn.pricePerMonth = element.pricePerMonth;
 
       return objectToReturn;
     });
+
+    this.appService.SubscriptionInfo.Adds = adds;
 
     this.terminated.next();
   }

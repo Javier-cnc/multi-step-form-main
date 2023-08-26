@@ -23,6 +23,12 @@
       <label [attr.name]="option.name">{{ option.nameText }}</label>
       <p>{{ option.description }}</p>
     </div>
-    <span class="add-price">+${{ option.price }}/mo</span>
+    <span class="add-price"
+      >+${{
+        subscriptionInfo.plan.isYearly
+          ? option.pricePerYear
+          : option.pricePerMonth
+      }}/{{ subscriptionInfo.plan.isYearly ? "yr" : "mo" }}</span
+    >
   </div>
 </div>

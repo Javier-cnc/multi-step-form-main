@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { urls } from 'src/app/models/globalVariables.model';
 import { IPage } from 'src/app/models/page.model';
+import { SubscriptionPlan } from 'src/app/models/subscriptionInfo.model';
 import { ApplicationBackgroundService } from 'src/app/services/application-background.service';
 
 @Component({
@@ -12,31 +13,33 @@ import { ApplicationBackgroundService } from 'src/app/services/application-backg
 export class PlanPageComponent implements IPage {
   private terminated: ReplaySubject<void> = new ReplaySubject<void>();
 
-  isYearly: boolean = false;
-
-  selectedPlan: string = '';
+  selectedPlan: SubscriptionPlan;
 
   options: {
     name: string;
-    price: number;
+    pricePerMonth: number;
+    pricePerYear: number;
     iconAddress: string;
     freeMonthQuantity: number;
   }[] = [
     {
       name: 'Arcade',
-      price: 9,
+      pricePerMonth: 9,
+      pricePerYear: 90,
       iconAddress: 'assets/images/icon-arcade.svg',
       freeMonthQuantity: 2,
     },
     {
       name: 'Advanced',
-      price: 12,
+      pricePerMonth: 12,
+      pricePerYear: 120,
       iconAddress: 'assets/images/icon-advanced.svg',
       freeMonthQuantity: 2,
     },
     {
       name: 'Pro',
-      price: 15,
+      pricePerMonth: 15,
+      pricePerYear: 150,
       iconAddress: 'assets/images/icon-pro.svg',
       freeMonthQuantity: 2,
     },
@@ -55,23 +58,32 @@ export class PlanPageComponent implements IPage {
       urls.navigationSequence.planPage.sequenceNumber;
 
     // get the selected plan from 'appService' data, if it is empty set a default value
-    this.selectedPlan =
-      this.appService.SubscriptionInfo.plan === ''
-        ? this.options[0].name
-        : this.appService.SubscriptionInfo.plan;
+    // create default value
+    var defaultValue: any = {};
+    defaultValue.name = this.options[0].name;
+    defaultValue.pricePerMonth = this.options[0].pricePerMonth;
+    defaultValue.pricePerYear = this.options[0].pricePerYear;
+    defaultValue.isYearly = false;
 
-    this.isYearly = this.appService.SubscriptionInfo.IsYearly;
+    this.selectedPlan = this.appService.SubscriptionInfo.plan
+      ? this.appService.SubscriptionInfo.plan
+      : defaultValue;
   }
 
   terminate(): void {
     // save information
     this.appService.SubscriptionInfo.plan = this.selectedPlan;
-    this.appService.SubscriptionInfo.IsYearly = this.isYearly;
 
     this.terminated.next();
   }
 
   validate(): boolean {
     return true;
+  }
+
+  setSelectedPlan(plan: any) {
+    this.selectedPlan.name = plan.name;
+    this.selectedPlan.pricePerYear = plan.pricePerYear;
+    this.selectedPlan.pricePerMonth = plan.pricePerMonth;
   }
 }
