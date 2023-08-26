@@ -54,12 +54,20 @@ export class PlanPageComponent implements IPage {
     this.appService.CurrentPageIndex =
       urls.navigationSequence.planPage.sequenceNumber;
 
-    // apply a default plan
-    this.selectedPlan = this.options[0].name;
+    // get the selected plan from 'appService' data, if it is empty set a default value
+    this.selectedPlan =
+      this.appService.SubscriptionInfo.plan === ''
+        ? this.options[0].name
+        : this.appService.SubscriptionInfo.plan;
+
+    this.isYearly = this.appService.SubscriptionInfo.IsYearly;
   }
 
   terminate(): void {
-    // TODO: ...
+    // save information
+    this.appService.SubscriptionInfo.plan = this.selectedPlan;
+    this.appService.SubscriptionInfo.IsYearly = this.isYearly;
+
     this.terminated.next();
   }
 

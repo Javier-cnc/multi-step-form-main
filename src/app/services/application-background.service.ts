@@ -2,11 +2,21 @@ import { Injectable } from '@angular/core';
 import { IPage } from '../models/page.model';
 import { urls } from '../models/globalVariables.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SubscriptionInfo } from '../models/subscriptionInfo.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApplicationBackgroundService {
+  // #region Subscription info
+  // hold all the information the user enters to the application
+  private subscriptionInfo: SubscriptionInfo = new SubscriptionInfo();
+
+  get SubscriptionInfo(): SubscriptionInfo {
+    return this.subscriptionInfo;
+  }
+  // #endregion
+
   // #region CurrentPage property
   // reference to the current page component implementing IPage interface
   private currentPage: IPage | null = null;

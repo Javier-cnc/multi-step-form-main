@@ -36,6 +36,11 @@ export class InfoPageComponent implements IPage {
     // informs the rest of the application the index of the current page
     appService.CurrentPageIndex =
       urls.navigationSequence.infoPage.sequenceNumber;
+
+    // get initial information
+    this.name = this.appService.SubscriptionInfo.name;
+    this.email = this.appService.SubscriptionInfo.email;
+    this.phoneNumber = this.appService.SubscriptionInfo.phoneNumber;
   }
 
   // returns false if the validation process was NOT successfull
@@ -86,10 +91,11 @@ export class InfoPageComponent implements IPage {
   }
 
   terminate(): void {
-    // TODO: actions to implement:
-    //    1- store data outside of the current component to avoid data lost
-    //    2- set-up some transition animation
-    //    3- when done, fired the 'termined' event (using next() method)
+    // save information
+    this.appService.SubscriptionInfo.name = this.name;
+    this.appService.SubscriptionInfo.email = this.email;
+    this.appService.SubscriptionInfo.phoneNumber = this.phoneNumber;
+
     this.terminated.next();
   }
 

@@ -51,6 +51,19 @@ export class AddsPageComponent implements IPage {
     appService.CurrentPage = this;
     appService.CurrentPageIndex =
       urls.navigationSequence.addsPage.sequenceNumber;
+
+    // get initial values
+    this.options.forEach((option) => {
+      // get a map with only the name values of the selected adds
+      var selectedNames = appService.SubscriptionInfo.Adds.map(
+        (add) => add.name
+      );
+
+      if (selectedNames.includes(option.name)) {
+        // if the option name is in the Adds array of Subscription info, then is a selected option
+        option.selected = true;
+      }
+    });
   }
 
   validate(): boolean {
@@ -58,7 +71,20 @@ export class AddsPageComponent implements IPage {
     return true;
   }
   terminate(): void {
-    // TODO: ...
+    // save information
+    // get only selected options
+    var selectedOptions = this.options.filter((element) => element.selected);
+
+    // extract just name and price information of the selected adds options
+    // and save those values
+    this.appService.SubscriptionInfo.Adds = selectedOptions.map((element) => {
+      let objectToReturn: any = {};
+      objectToReturn.name = element.name;
+      objectToReturn.price = element.price;
+
+      return objectToReturn;
+    });
+
     this.terminated.next();
   }
 
