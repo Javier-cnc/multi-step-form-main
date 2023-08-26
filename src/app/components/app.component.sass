@@ -17,13 +17,21 @@
   flex-direction: row
 
 .navigation-panel-container
-  width: 250px
+  flex: 0 0 250px
   position: relative
   background-image: url('/assets/images/bg-sidebar-desktop.svg')
   background-size: 100%
   overflow: hidden
   background-repeat: no-repeat
 
+.right-side-panel-container
+  display: flex
+  flex-direction: column
+  padding-right: 50px
+  padding-left: 50px
+
 .page-container
   flex-grow: 1
-  background-color: c.$gray-color
+
+
+

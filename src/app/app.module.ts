@@ -9,6 +9,7 @@ import { AddsPageComponent } from './components/adds-page/adds-page.component';
 import { SummaryPageComponent } from './components/summary-page/summary-page.component';
 import { RouterModule } from '@angular/router';
 import { NavigationPanelComponent } from './components/navigation-panel/navigation-panel.component';
+import { NavigationButtonsBarComponent } from './components/navigation-buttons-bar/navigation-buttons-bar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NavigationPanelComponent } from './components/navigation-panel/navigati
     AddsPageComponent,
     SummaryPageComponent,
     NavigationPanelComponent,
+    NavigationButtonsBarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, RouterModule],
   providers: [],

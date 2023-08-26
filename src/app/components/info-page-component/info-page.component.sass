@@ -1,0 +1,33 @@
+@use '../../../variables/colors' as c
+@use '../../../variables/fonts' as f
+
+p
+  color: c.$gray-color
+
+
+.label-form
+  display: block
+  margin-bottom: 5px
+
+.form-control-container
+  margin-top: 20px
+  position: relative
+
+.input-form
+  border: none
+  outline: none
+  border: 1px solid c.$gray-color
+  border-radius: 5px
+  padding: 10px
+  width: 100%
+
+.input-form:focus
+    border-color: c.$verydark-blue-color !important
+
+.top-label-bar
+  display: flex
+  justify-content: space-between
+
+.validation-message
+  color: c.$red-color
+  opacity: 0
