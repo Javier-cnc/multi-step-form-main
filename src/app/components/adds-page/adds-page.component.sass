@@ -1,0 +1,40 @@
+@use '../../../variables/_colors' as c
+
+.selection-panel
+  margin-top: 20px
+
+.selection-item
+  border: 1px solid c.$light-gray-color
+  border-radius: 5px
+  padding: 10px
+  display: flex
+  align-items: center
+  margin-bottom: 10px
+  cursor: pointer
+
+.selection-item:hover
+  border-color: c.$verydark-blue-color
+
+.selection-item.selected
+  background-color: c.$verylight-blue-color
+  border-color: c.$verydark-blue-color
+
+.description
+  flex-grow: 1
+
+.checkbox
+  margin-right: 20px
+p
+  margin-top: 5px
+  margin-bottom: 5px
+
+.overlayer
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  background-color: transparent
+
+.checkbox-container
+  position: relative

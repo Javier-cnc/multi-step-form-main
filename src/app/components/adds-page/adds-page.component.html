@@ -1,1 +1,28 @@
-<p>adds-page works!</p>
+<h1>Pick add-ons</h1>
+<p>Add-ons help enhance your gaming experience</p>
+
+<div class="selection-panel">
+  <div
+    (click)="test($event)"
+    class="selection-item"
+    [class.selected]="option.selected"
+    (click)="option.selected = !option.selected"
+    *ngFor="let option of options"
+  >
+    <div class="checkbox-container">
+      <input
+        class="checkbox"
+        [ngModel]="option.selected"
+        type="checkbox"
+        [attr.name]="option.name"
+      />
+      <!--layer that overlaps the checkbox element to avoid click behavior-->
+      <div class="overlayer"></div>
+    </div>
+    <div class="description">
+      <label [attr.name]="option.name">{{ option.nameText }}</label>
+      <p>{{ option.description }}</p>
+    </div>
+    <span class="add-price">+${{ option.price }}/mo</span>
+  </div>
+</div>
