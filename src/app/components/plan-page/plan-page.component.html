@@ -1,1 +1,25 @@
-<p>plan-page works!</p>
+<h1>Select your plan</h1>
+<p>You have the option of monthly or yearly billing</p>
+<div class="selection-panel">
+  <div
+    class="selection-item"
+    [class.selected]="selectedPlan === item.name"
+    (click)="selectedPlan = item.name"
+    *ngFor="let item of options"
+  >
+    <div class="icon-container">
+      <img [attr.src]="item.iconAddress" />
+    </div>
+    <span class="option-name">{{ item.name }}</span>
+    <span class="option-price">${{ item.price }}/mo</span>
+    <span class="month-quantity" [class.collapse]="!isYearly"
+      >{{ item.freeMonthQuantity }} months free</span
+    >
+  </div>
+</div>
+
+<div class="switch-button-panel">
+  <span class="switch-option" [class.selected]="!isYearly">Monthly</span>
+  <button (click)="isYearly = !isYearly">placeholder</button>
+  <span class="switch-option" [class.selected]="isYearly">Yearly</span>
+</div>

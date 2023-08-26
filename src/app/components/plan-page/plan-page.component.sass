@@ -1,0 +1,62 @@
+@use '../../../variables/colors' as c
+@use '../../../variables/fonts' as f
+
+.selection-item
+  border: 1px solid c.$light-gray-color
+  border-radius: 5px
+  margin-right: 10px
+  display: flex
+  flex-direction: column
+  flex: 1 1 0
+  padding: 10px
+
+.selection-item:hover
+  border-color: c.$dark-blue-color
+  cursor: pointer
+
+.selection-item.selected
+  background-color: c.$verylight-blue-color
+  border-color: c.$dark-blue-color
+
+.icon-container
+  margin-bottom: 60px
+
+.selection-panel
+  display: flex
+  width: 100%
+
+.option-name
+  display: block
+  color: c.$dark-blue-color
+  font-size: f.$medium-font
+  margin-bottom: 10px
+
+.option-price
+  color: c.$gray-color
+  flex-grow: 1
+
+
+.switch-button-panel
+  padding: 10px
+  margin-top: 30px
+  background-color: c.$verylight-gray-color
+  display: flex
+  justify-content: center
+  align-items: center
+
+.switch-option
+  margin-right: 10px
+  margin-left: 10px
+  color: c.$gray-color
+
+.switch-option.selected
+  color: c.$dark-blue-color
+  font-weight: bold
+
+.month-quantity
+  font-size: f.$small-font
+  margin-top: 5px
+  font-weight: bold
+
+.month-quantity.collapse
+  display: none
