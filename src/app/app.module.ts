@@ -10,7 +10,7 @@ import { SummaryPageComponent } from './components/summary-page/summary-page.com
 import { RouterModule } from '@angular/router';
 import { NavigationPanelComponent } from './components/navigation-panel/navigation-panel.component';
 import { NavigationButtonsBarComponent } from './components/navigation-buttons-bar/navigation-buttons-bar.component';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +21,7 @@ import { NavigationButtonsBarComponent } from './components/navigation-buttons-b
     NavigationPanelComponent,
     NavigationButtonsBarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule],
+  imports: [BrowserModule, AppRoutingModule, RouterModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -2,22 +2,55 @@
 <p>Please provide your name, email address and phone number</p>
 
 <div class="form-control-container">
-  <label class="label-form">Name</label>
-  <input class="input-form" type="text" name="name" />
+  <div class="top-label-bar">
+    <label class="label-form">Name</label>
+    <span class="validation-message" [class.visible]="invalidName"
+      >A valid name is required</span
+    >
+  </div>
+  <input
+    placeholder="e.g Stephen King"
+    (keypress)="clearNameStatus()"
+    [(ngModel)]="name"
+    class="input-form"
+    [class.invalid]="invalidName"
+    type="text"
+    name="name"
+  />
 </div>
 
 <div class="form-control-container">
   <div class="top-label-bar">
     <label class="label-form">Email address</label>
-    <span class="validation-message">A valid email is required</span>
+    <span class="validation-message" [class.visible]="invalidEmail"
+      >A valid email is required</span
+    >
   </div>
-  <input class="input-form" type="email" name="email" />
+  <input
+    placeholder="e.g stephenking@lorem.com"
+    [(ngModel)]="email"
+    (keypress)="clearEmailStatus()"
+    class="input-form"
+    [class.invalid]="invalidEmail"
+    type="email"
+    name="email"
+  />
 </div>
 
 <div class="form-control-container">
   <div class="top-label-bar">
     <label class="label-form">Phone number</label>
-    <span class="validation-message">A valid phone number is required</span>
+    <span class="validation-message" [class.visible]="invalidPhoneNumber"
+      >A valid phone number is required</span
+    >
   </div>
-  <input class="input-form" type="tel" name="phoneNumber" />
+  <input
+    placeholder="e.g +1234567890"
+    [(ngModel)]="phoneNumber"
+    (keypress)="clearPhoneNumberStatus()"
+    class="input-form"
+    [class.invalid]="invalidPhoneNumber"
+    type="tel"
+    name="phoneNumber"
+  />
 </div>

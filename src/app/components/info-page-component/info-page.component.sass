@@ -24,10 +24,18 @@ p
 .input-form:focus
     border-color: c.$verydark-blue-color !important
 
+.input-form.invalid
+  border-color: c.$red-color
+
 .top-label-bar
   display: flex
   justify-content: space-between
 
 .validation-message
   color: c.$red-color
-  opacity: 0
+  visibility: hidden
+
+.validation-message.visible
+  visibility: visible
+
+
