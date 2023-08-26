@@ -1,0 +1,37 @@
+@use '../../../variables/colors' as c
+@use '../../../variables/fonts' as f
+
+.item
+  background-color: c.$verylight-gray-color
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 10px
+  margin-bottom: 5px
+
+.stand-up
+  font-weight: bold
+  display: block
+
+.navigate-link
+  color: c.$gray-color
+  margin-top: 8px
+  display: block
+
+.add-price
+  color: c.$dark-blue-color
+  font-size: f.$small-font
+.add-name
+  color: c.$gray-color
+
+.total-label
+  color: c.$gray-color
+.total-price
+  color: c.$blue-color
+  font-size: f.$medium-font
+
+.add-item
+  margin-bottom: 0 !important
+
+.item:last-child
+  margin-top: 5px

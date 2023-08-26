@@ -1,1 +1,20 @@
-<p>summary-page works!</p>
+<h1>Finishing up</h1>
+<p>Double-check everything looks OK before confirming</p>
+
+<div class="services-panel">
+  <div class="item">
+    <div class="left-items-container">
+      <span class="stand-up">Arcade(Yearly)</span>
+      <a class="navigate-link">Change</a>
+    </div>
+    <span class="stand-up">$90/yr</span>
+  </div>
+  <div *ngFor="let add of [1, 2, 3]" class="item add-item">
+    <span class="add-name">Online service</span>
+    <span class="add-price">+$10/yr</span>
+  </div>
+  <div class="item">
+    <span class="total-label"> Total(per year) </span>
+    <span class="total-price">$120/yr</span>
+  </div>
+</div>

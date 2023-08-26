@@ -6,11 +6,7 @@
   >
     Go back
   </button>
-  <button
-    class="forward-btn btn"
-    [class.hidden]="IsLastPage"
-    (click)="moveForward()"
-  >
-    Next step
+  <button class="forward-btn btn" (click)="moveForward()">
+    {{ IsLastPage ? "Confirm" : "Next step" }}
   </button>
 </div>
