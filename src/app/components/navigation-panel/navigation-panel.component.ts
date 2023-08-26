@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { urls } from '../../models/globalVariables.model';
 
 @Component({
   selector: 'app-navigation-panel',
@@ -11,25 +12,25 @@ export class NavigationPanelComponent {
       pageName: 'YOUR INFO',
       stepName: 'STEP 1',
       number: '1',
-      url: 'info',
+      url: urls.navigationSequence.infoPage.url,
     },
     {
       pageName: 'SELECT PLAN',
       stepName: 'STEP 2',
       number: '2',
-      url: 'plan',
+      url: urls.navigationSequence.planPage.url,
     },
     {
       pageName: 'ADD-ONS',
       stepName: 'STEP 3',
       number: '3',
-      url: 'adds',
+      url: urls.navigationSequence.addsPage.url,
     },
     {
       pageName: 'SUMMARY',
       stepName: 'STEP 4',
       number: '4',
-      url: 'summary',
+      url: urls.navigationSequence.summaryPage.url,
     },
   ];
 }

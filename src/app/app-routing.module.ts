@@ -4,13 +4,17 @@ import { InfoPageComponent } from './components/info-page-component/info-page.co
 import { PlanPageComponent } from './components/plan-page/plan-page.component';
 import { AddsPageComponent } from './components/adds-page/adds-page.component';
 import { SummaryPageComponent } from './components/summary-page/summary-page.component';
+import { urls } from './models/globalVariables.model';
+
+// create shortcut to access navigation sequence urls
+const navSeq = urls.navigationSequence;
 
 const routes: Routes = [
-  { path: '', redirectTo: 'info', pathMatch: 'full' },
-  { path: 'info', component: InfoPageComponent },
-  { path: 'plan', component: PlanPageComponent },
-  { path: 'adds', component: AddsPageComponent },
-  { path: 'summary', component: SummaryPageComponent },
+  { path: '', redirectTo: navSeq.infoPage.url, pathMatch: 'full' },
+  { path: navSeq.infoPage.url, component: InfoPageComponent },
+  { path: navSeq.planPage.url, component: PlanPageComponent },
+  { path: navSeq.addsPage.url, component: AddsPageComponent },
+  { path: navSeq.summaryPage.url, component: SummaryPageComponent },
 ];
 
 @NgModule({
