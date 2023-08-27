@@ -56,6 +56,13 @@ export class ApplicationBackgroundService {
     return this.CurrentPageIndex === 0;
   }
 
+  get IsSummaryPage(): boolean {
+    return (
+      this.CurrentPageIndex ===
+      urls.navigationSequence.summaryPage.sequenceNumber
+    );
+  }
+
   constructor(private activeRoute: ActivatedRoute, private router: Router) {
     // feed adds collection
     this.subscriptionInfo.adds = [

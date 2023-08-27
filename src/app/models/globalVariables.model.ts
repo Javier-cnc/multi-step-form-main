@@ -16,5 +16,9 @@ export const urls = {
       sequenceNumber: 3,
       url: 'summary',
     },
+    confirmationPage: {
+      sequenceNumber: 4,
+      url: 'confirmation',
+    },
   },
 };

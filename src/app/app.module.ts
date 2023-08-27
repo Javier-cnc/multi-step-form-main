@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { NavigationPanelComponent } from './components/navigation-panel/navigation-panel.component';
 import { NavigationButtonsBarComponent } from './components/navigation-buttons-bar/navigation-buttons-bar.component';
 import { FormsModule } from '@angular/forms';
+import { ConfirmationPageComponent } from './components/confirmation-page/confirmation-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     SummaryPageComponent,
     NavigationPanelComponent,
     NavigationButtonsBarComponent,
+    ConfirmationPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, RouterModule, FormsModule],
   providers: [],

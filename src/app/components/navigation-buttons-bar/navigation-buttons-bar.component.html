@@ -1,12 +1,16 @@
 <div class="navigation-buttons-bar">
   <button
     class="back-btn btn"
-    [class.hidden]="IsInitialPage"
+    [class.hidden]="IsInitialPage || IsLastPage"
     (click)="moveBack()"
   >
     Go back
   </button>
-  <button class="forward-btn btn" (click)="moveForward()">
-    {{ IsLastPage ? "Confirm" : "Next step" }}
+  <button
+    class="forward-btn btn"
+    [class.hidden]="IsLastPage"
+    (click)="moveForward()"
+  >
+    {{ IsSummaryPage ? "Confirm" : "Next step" }}
   </button>
 </div>

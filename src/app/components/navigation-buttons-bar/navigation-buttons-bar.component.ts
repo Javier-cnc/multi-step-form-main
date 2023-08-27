@@ -25,4 +25,8 @@ export class NavigationButtonsBarComponent {
   get IsInitialPage(): boolean {
     return this.appService.IsInitialPage;
   }
+
+  get IsSummaryPage(): boolean {
+    return this.appService.IsSummaryPage;
+  }
 }
