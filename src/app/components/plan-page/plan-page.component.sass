@@ -1,5 +1,6 @@
 @use '../../../variables/colors' as c
 @use '../../../variables/fonts' as f
+@use '../../../variables/responsive' as r
 
 .selection-item
   border: 1px solid c.$light-gray-color
@@ -20,6 +21,7 @@
 
 .icon-container
   margin-bottom: 60px
+  margin-right: 10px
 
 .selection-panel
   display: flex
@@ -34,6 +36,7 @@
 .option-price
   color: c.$gray-color
   flex-grow: 1
+  display: block
 
 
 .switch-button-panel
@@ -60,3 +63,15 @@
 
 .month-quantity.collapse
   display: none
+
+/* Responsive rules */
+@media (max-width: r.$phone-breakpoint)
+  .selection-panel
+    display: block
+  .icon-container
+    margin-bottom: 5px
+  .selection-item
+    flex-direction: row
+    margin-bottom: 10px
+  .option-name
+    margin-bottom: 5px

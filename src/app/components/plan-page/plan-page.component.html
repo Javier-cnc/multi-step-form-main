@@ -10,15 +10,17 @@
     <div class="icon-container">
       <img [attr.src]="plan.iconAddress" />
     </div>
-    <span class="option-name">{{ plan.name }}</span>
-    <span class="option-price"
-      >${{
-        subscriptionInfo.isYearly ? plan.pricePerYear : plan.pricePerMonth
-      }}/mo</span
-    >
-    <span class="month-quantity" [class.collapse]="!subscriptionInfo.isYearly"
-      >{{ plan.freeMonthQuantity }} months free</span
-    >
+    <div class="description-container">
+      <span class="option-name">{{ plan.name }}</span>
+      <span class="option-price"
+        >${{
+          subscriptionInfo.isYearly ? plan.pricePerYear : plan.pricePerMonth
+        }}/mo</span
+      >
+      <span class="month-quantity" [class.collapse]="!subscriptionInfo.isYearly"
+        >{{ plan.freeMonthQuantity }} months free</span
+      >
+    </div>
   </div>
 </div>
 
