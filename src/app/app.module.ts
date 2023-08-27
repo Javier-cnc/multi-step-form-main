@@ -12,6 +12,7 @@ import { NavigationPanelComponent } from './components/navigation-panel/navigati
 import { NavigationButtonsBarComponent } from './components/navigation-buttons-bar/navigation-buttons-bar.component';
 import { FormsModule } from '@angular/forms';
 import { ConfirmationPageComponent } from './components/confirmation-page/confirmation-page.component';
+import { SwitchButtonComponent } from './components/switch-button/switch-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { ConfirmationPageComponent } from './components/confirmation-page/confir
     NavigationPanelComponent,
     NavigationButtonsBarComponent,
     ConfirmationPageComponent,
+    SwitchButtonComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, RouterModule, FormsModule],
   providers: [],

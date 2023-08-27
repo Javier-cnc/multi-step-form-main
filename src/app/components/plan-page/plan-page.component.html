@@ -26,9 +26,11 @@
   <span class="switch-option" [class.selected]="!subscriptionInfo.isYearly"
     >Monthly</span
   >
-  <button (click)="subscriptionInfo.isYearly = !subscriptionInfo.isYearly">
-    placeholder
-  </button>
+  <app-switch-button
+    type="rounded"
+    [(value)]="subscriptionInfo.isYearly"
+  ></app-switch-button>
+
   <span class="switch-option" [class.selected]="subscriptionInfo.isYearly"
     >Yearly</span
   >

@@ -173,4 +173,8 @@ export class ApplicationBackgroundService {
       this.router.navigateByUrl(url);
     }
   }
+
+  navigateToPlanPage() {
+    this.navigateToPage(urls.navigationSequence.planPage.sequenceNumber);
+  }
 }

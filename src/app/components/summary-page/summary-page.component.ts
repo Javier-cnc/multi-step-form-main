@@ -72,4 +72,8 @@ export class SummaryPageComponent {
   get SelectedAdds(): Add[] {
     return this.subscriptionInfo.adds.filter((add) => add.selected);
   }
+
+  navigateToPlanPage() {
+    this.appService.navigateToPlanPage();
+  }
 }
