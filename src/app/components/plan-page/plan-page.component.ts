@@ -31,6 +31,9 @@ export class PlanPageComponent implements IPage {
       urls.navigationSequence.planPage.sequenceNumber;
 
     this.subscriptionInfo = appService.SubscriptionInfo;
+
+    // set default plan
+    this.subscriptionInfo.plans[0].selected = true;
   }
 
   terminate(): void {
