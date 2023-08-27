@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { urls } from 'src/app/models/globalVariables.model';
-import { SubscriptionInfo } from 'src/app/models/subscriptionInfo.model';
+import {
+  Add,
+  SubscriptionInfo,
+  SubscriptionPlan,
+} from 'src/app/models/subscriptionInfo.model';
 import { ApplicationBackgroundService } from 'src/app/services/application-background.service';
 
 @Component({
@@ -33,9 +37,12 @@ export class SummaryPageComponent {
 
     this.subscriptionInfo = this.appService.SubscriptionInfo;
 
+    // filter only the selected adds
+    var selectedAdds = this.SelectedAdds;
+
     // calculate the sum of adds prices
-    var addPrices = this.subscriptionInfo.Adds.map((add) => {
-      return this.subscriptionInfo.plan.isYearly
+    var addPrices = selectedAdds.map((add) => {
+      return this.subscriptionInfo.isYearly
         ? add.pricePerYear
         : add.pricePerMonth;
     });
@@ -45,12 +52,24 @@ export class SummaryPageComponent {
       addTotalPrice += price;
     });
 
-    // calculate the total price value
-    if (this.subscriptionInfo.plan.isYearly) {
-      this.totalValue = this.subscriptionInfo.plan.pricePerYear + addTotalPrice;
-    } else {
-      this.totalValue =
-        this.subscriptionInfo.plan.pricePerMonth + addTotalPrice;
+    if (this.SelectedPlan == undefined) {
+      return;
     }
+
+    // calculate the total price value
+    if (this.subscriptionInfo.isYearly) {
+      this.totalValue = this.SelectedPlan.pricePerYear + addTotalPrice;
+    } else {
+      this.totalValue = this.SelectedPlan.pricePerMonth + addTotalPrice;
+    }
+  }
+
+  // return the selected plan element
+  get SelectedPlan(): SubscriptionPlan | undefined {
+    return this.subscriptionInfo.plans.find((plan) => plan.selected);
+  }
+
+  get SelectedAdds(): Add[] {
+    return this.subscriptionInfo.adds.filter((add) => add.selected);
   }
 }

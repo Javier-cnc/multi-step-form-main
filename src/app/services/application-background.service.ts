@@ -56,7 +56,62 @@ export class ApplicationBackgroundService {
     return this.CurrentPageIndex === 0;
   }
 
-  constructor(private activeRoute: ActivatedRoute, private router: Router) {}
+  constructor(private activeRoute: ActivatedRoute, private router: Router) {
+    // feed adds collection
+    this.subscriptionInfo.adds = [
+      {
+        name: 'onlineService',
+        selected: false,
+        nameText: 'Online service',
+        description: 'Access to multiplayer games',
+        pricePerMonth: 1,
+        pricePerYear: 10,
+      },
+      {
+        name: 'largerStorage',
+        selected: false,
+        nameText: 'Larger storage',
+        description: 'Extra 1TB of cloud save',
+        pricePerMonth: 2,
+        pricePerYear: 20,
+      },
+      {
+        name: 'customizableProfile',
+        selected: false,
+        nameText: 'Customizable profile',
+        description: 'Custom theme on your profile',
+        pricePerMonth: 2,
+        pricePerYear: 20,
+      },
+    ];
+
+    this.subscriptionInfo.plans = [
+      {
+        name: 'Arcade',
+        pricePerMonth: 9,
+        pricePerYear: 90,
+        iconAddress: 'assets/images/icon-arcade.svg',
+        freeMonthQuantity: 2,
+        selected: false,
+      },
+      {
+        name: 'Advanced',
+        pricePerMonth: 12,
+        pricePerYear: 120,
+        iconAddress: 'assets/images/icon-advanced.svg',
+        freeMonthQuantity: 2,
+        selected: false,
+      },
+      {
+        name: 'Pro',
+        pricePerMonth: 15,
+        pricePerYear: 150,
+        iconAddress: 'assets/images/icon-pro.svg',
+        freeMonthQuantity: 2,
+        selected: false,
+      },
+    ];
+  }
 
   // try to navigate to the next corresponding page in the navigation sequence
   moveForward() {

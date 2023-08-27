@@ -5,30 +5,28 @@
   <div
     (click)="test($event)"
     class="selection-item"
-    [class.selected]="option.selected"
-    (click)="option.selected = !option.selected"
-    *ngFor="let option of options"
+    [class.selected]="add.selected"
+    (click)="add.selected = !add.selected"
+    *ngFor="let add of subscriptionInfo.adds"
   >
     <div class="checkbox-container">
       <input
         class="checkbox"
-        [ngModel]="option.selected"
+        [ngModel]="add.selected"
         type="checkbox"
-        [attr.name]="option.name"
+        [attr.name]="add.name"
       />
       <!--layer that overlaps the checkbox element to avoid click behavior-->
       <div class="overlayer"></div>
     </div>
     <div class="description">
-      <label [attr.name]="option.name">{{ option.nameText }}</label>
-      <p>{{ option.description }}</p>
+      <label [attr.name]="add.name">{{ add.nameText }}</label>
+      <p>{{ add.description }}</p>
     </div>
     <span class="add-price"
       >+${{
-        subscriptionInfo.plan.isYearly
-          ? option.pricePerYear
-          : option.pricePerMonth
-      }}/{{ subscriptionInfo.plan.isYearly ? "yr" : "mo" }}</span
+        subscriptionInfo.isYearly ? add.pricePerYear : add.pricePerMonth
+      }}/{{ subscriptionInfo.isYearly ? "yr" : "mo" }}</span
     >
   </div>
 </div>

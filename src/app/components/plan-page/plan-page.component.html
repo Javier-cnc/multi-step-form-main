@@ -3,33 +3,33 @@
 <div class="selection-panel">
   <div
     class="selection-item"
-    [class.selected]="selectedPlan.name === item.name"
-    (click)="setSelectedPlan(item)"
-    *ngFor="let item of options"
+    [class.selected]="plan.selected"
+    (click)="setSelectedPlan(i)"
+    *ngFor="let plan of subscriptionInfo.plans; let i = index"
   >
     <div class="icon-container">
-      <img [attr.src]="item.iconAddress" />
+      <img [attr.src]="plan.iconAddress" />
     </div>
-    <span class="option-name">{{ item.name }}</span>
+    <span class="option-name">{{ plan.name }}</span>
     <span class="option-price"
       >${{
-        selectedPlan.isYearly ? item.pricePerYear : item.pricePerMonth
+        subscriptionInfo.isYearly ? plan.pricePerYear : plan.pricePerMonth
       }}/mo</span
     >
-    <span class="month-quantity" [class.collapse]="!selectedPlan.isYearly"
-      >{{ item.freeMonthQuantity }} months free</span
+    <span class="month-quantity" [class.collapse]="!subscriptionInfo.isYearly"
+      >{{ plan.freeMonthQuantity }} months free</span
     >
   </div>
 </div>
 
 <div class="switch-button-panel">
-  <span class="switch-option" [class.selected]="!selectedPlan.isYearly"
+  <span class="switch-option" [class.selected]="!subscriptionInfo.isYearly"
     >Monthly</span
   >
-  <button (click)="selectedPlan.isYearly = !selectedPlan.isYearly">
+  <button (click)="subscriptionInfo.isYearly = !subscriptionInfo.isYearly">
     placeholder
   </button>
-  <span class="switch-option" [class.selected]="selectedPlan.isYearly"
+  <span class="switch-option" [class.selected]="subscriptionInfo.isYearly"
     >Yearly</span
   >
 </div>

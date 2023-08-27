@@ -5,34 +5,34 @@
   <div class="item">
     <div class="left-items-container">
       <span class="stand-up"
-        >Arcade({{ subscriptionInfo.plan.isYearly ? "Year" : "Month" }})</span
+        >{{ SelectedPlan?.name }} ({{
+          subscriptionInfo.isYearly ? "Yearly" : "Monthly"
+        }})</span
       >
       <a class="navigate-link">Change</a>
     </div>
     <span class="stand-up"
       >${{
-        subscriptionInfo.plan.isYearly
-          ? subscriptionInfo.plan.pricePerYear
-          : subscriptionInfo.plan.pricePerMonth
-      }}/{{ subscriptionInfo.plan.isYearly ? "yr" : "mo" }}</span
+        subscriptionInfo.isYearly
+          ? SelectedPlan?.pricePerYear
+          : SelectedPlan?.pricePerMonth
+      }}/{{ subscriptionInfo.isYearly ? "yr" : "mo" }}</span
     >
   </div>
-  <div *ngFor="let add of subscriptionInfo.Adds" class="item add-item">
-    <span class="add-name">{{ add.name }}</span>
+  <div *ngFor="let add of SelectedAdds" class="item add-item">
+    <span class="add-name">{{ add.nameText }}</span>
     <span class="add-price"
       >+${{
-        subscriptionInfo.plan.isYearly ? add.pricePerYear : add.pricePerMonth
-      }}/{{ subscriptionInfo.plan.isYearly ? "yr" : "mo" }}</span
+        subscriptionInfo.isYearly ? add.pricePerYear : add.pricePerMonth
+      }}/{{ subscriptionInfo.isYearly ? "yr" : "mo" }}</span
     >
   </div>
   <div class="item">
     <span class="total-label">
-      Total (per {{ subscriptionInfo.plan.isYearly ? "year" : "month" }})
+      Total (per {{ subscriptionInfo.isYearly ? "year" : "month" }})
     </span>
     <span class="total-price"
-      >${{ totalValue }}/{{
-        subscriptionInfo.plan.isYearly ? "yr" : "mo"
-      }}</span
+      >${{ totalValue }}/{{ subscriptionInfo.isYearly ? "yr" : "mo" }}</span
     >
   </div>
 </div>
