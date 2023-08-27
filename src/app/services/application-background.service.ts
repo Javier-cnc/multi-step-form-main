@@ -78,6 +78,13 @@ export class ApplicationBackgroundService {
     );
   }
 
+  get IsConfirmationPage(): boolean {
+    return (
+      this.currentPageIndex ===
+      urls.navigationSequence.confirmationPage.sequenceNumber
+    );
+  }
+
   constructor(private activeRoute: ActivatedRoute, private router: Router) {
     // feed adds collection
     this.subscriptionInfo.adds = [

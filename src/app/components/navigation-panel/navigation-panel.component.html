@@ -2,7 +2,10 @@
   <div class="navigation-panel-item" *ngFor="let item of navigationItems">
     <span
       class="number-indicator"
-      [class.selected]="item.url === CurrentUrlSegment"
+      [class.selected]="
+        item.url === CurrentUrlSegment ||
+        (item.number === 4 && IsConfirmationPage)
+      "
       >{{ item.number }}</span
     >
     <div class="description-container">

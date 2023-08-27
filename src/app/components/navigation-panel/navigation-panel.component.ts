@@ -12,25 +12,25 @@ export class NavigationPanelComponent {
     {
       pageName: 'YOUR INFO',
       stepName: 'STEP 1',
-      number: '1',
+      number: 1,
       url: urls.navigationSequence.infoPage.url,
     },
     {
       pageName: 'SELECT PLAN',
       stepName: 'STEP 2',
-      number: '2',
+      number: 2,
       url: urls.navigationSequence.planPage.url,
     },
     {
       pageName: 'ADD-ONS',
       stepName: 'STEP 3',
-      number: '3',
+      number: 3,
       url: urls.navigationSequence.addsPage.url,
     },
     {
       pageName: 'SUMMARY',
       stepName: 'STEP 4',
-      number: '4',
+      number: 4,
       url: urls.navigationSequence.summaryPage.url,
     },
   ];
@@ -39,5 +39,9 @@ export class NavigationPanelComponent {
 
   get CurrentUrlSegment(): string {
     return this.appService.CurrentUrlSegment;
+  }
+
+  get IsConfirmationPage(): boolean {
+    return this.appService.IsConfirmationPage;
   }
 }
