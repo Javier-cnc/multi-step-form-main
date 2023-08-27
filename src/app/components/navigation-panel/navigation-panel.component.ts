@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { urls } from '../../models/globalVariables.model';
+import { ApplicationBackgroundService } from 'src/app/services/application-background.service';
 
 @Component({
   selector: 'app-navigation-panel',
@@ -33,4 +34,10 @@ export class NavigationPanelComponent {
       url: urls.navigationSequence.summaryPage.url,
     },
   ];
+
+  constructor(private appService: ApplicationBackgroundService) {}
+
+  get CurrentUrlSegment(): string {
+    return this.appService.CurrentUrlSegment;
+  }
 }

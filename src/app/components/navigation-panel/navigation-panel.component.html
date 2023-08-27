@@ -2,8 +2,7 @@
   <div class="navigation-panel-item" *ngFor="let item of navigationItems">
     <span
       class="number-indicator"
-      [routerLink]="item.url"
-      routerLinkActive="selected"
+      [class.selected]="item.url === CurrentUrlSegment"
       >{{ item.number }}</span
     >
     <div class="description-container">

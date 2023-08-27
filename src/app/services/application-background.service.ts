@@ -8,6 +8,13 @@ import { SubscriptionInfo } from '../models/subscriptionInfo.model';
   providedIn: 'root',
 })
 export class ApplicationBackgroundService {
+  // #region CurrentUrlSegment
+  private currentUrlSegment: string = '';
+  get CurrentUrlSegment(): string {
+    return this.currentUrlSegment;
+  }
+  // #endregion
+
   // #region Subscription info
   // hold all the information the user enters to the application
   private subscriptionInfo: SubscriptionInfo = new SubscriptionInfo();
@@ -39,6 +46,14 @@ export class ApplicationBackgroundService {
 
   set CurrentPageIndex(pageIndex: number) {
     this.currentPageIndex = pageIndex;
+    var navigationSequenceArray = Object.values(urls.navigationSequence);
+
+    var page = navigationSequenceArray.find(
+      (element) => element.sequenceNumber === pageIndex
+    );
+    if (page) {
+      this.currentUrlSegment = page.url;
+    }
   }
   // #endregion
 
