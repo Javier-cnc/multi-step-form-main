@@ -32,8 +32,10 @@ export class PlanPageComponent implements IPage {
 
     this.subscriptionInfo = appService.SubscriptionInfo;
 
-    // set default plan
-    this.subscriptionInfo.plans[0].selected = true;
+    // set default plan in case no plan is selected
+    if (!this.subscriptionInfo.plans.find((plan) => plan.selected)) {
+      this.subscriptionInfo.plans[0].selected = true;
+    }
   }
 
   terminate(): void {
