@@ -17,7 +17,7 @@ export class ApplicationBackgroundService {
 
   // #region Subscription info
   // hold all the information the user enters to the application
-  private subscriptionInfo: SubscriptionInfo = new SubscriptionInfo();
+  private subscriptionInfo: SubscriptionInfo;
 
   get SubscriptionInfo(): SubscriptionInfo {
     return this.subscriptionInfo;
@@ -86,60 +86,8 @@ export class ApplicationBackgroundService {
   }
 
   constructor(private activeRoute: ActivatedRoute, private router: Router) {
-    // feed adds collection
-    this.subscriptionInfo.adds = [
-      {
-        name: 'onlineService',
-        selected: false,
-        nameText: 'Online service',
-        description: 'Access to multiplayer games',
-        pricePerMonth: 1,
-        pricePerYear: 10,
-      },
-      {
-        name: 'largerStorage',
-        selected: false,
-        nameText: 'Larger storage',
-        description: 'Extra 1TB of cloud save',
-        pricePerMonth: 2,
-        pricePerYear: 20,
-      },
-      {
-        name: 'customizableProfile',
-        selected: false,
-        nameText: 'Customizable profile',
-        description: 'Custom theme on your profile',
-        pricePerMonth: 2,
-        pricePerYear: 20,
-      },
-    ];
-
-    this.subscriptionInfo.plans = [
-      {
-        name: 'Arcade',
-        pricePerMonth: 9,
-        pricePerYear: 90,
-        iconAddress: 'assets/images/icon-arcade.svg',
-        freeMonthQuantity: 2,
-        selected: false,
-      },
-      {
-        name: 'Advanced',
-        pricePerMonth: 12,
-        pricePerYear: 120,
-        iconAddress: 'assets/images/icon-advanced.svg',
-        freeMonthQuantity: 2,
-        selected: false,
-      },
-      {
-        name: 'Pro',
-        pricePerMonth: 15,
-        pricePerYear: 150,
-        iconAddress: 'assets/images/icon-pro.svg',
-        freeMonthQuantity: 2,
-        selected: false,
-      },
-    ];
+    // set initial values to subscription info
+    this.subscriptionInfo = this.createNewSubscriptionInfo();
   }
 
   // try to navigate to the next corresponding page in the navigation sequence
@@ -196,7 +144,76 @@ export class ApplicationBackgroundService {
     }
   }
 
+  private createNewSubscriptionInfo(): SubscriptionInfo {
+    // initialize subscription info
+    let newSubscriptionInfo = new SubscriptionInfo();
+
+    // feed adds collection
+    newSubscriptionInfo.adds = [
+      {
+        name: 'onlineService',
+        selected: false,
+        nameText: 'Online service',
+        description: 'Access to multiplayer games',
+        pricePerMonth: 1,
+        pricePerYear: 10,
+      },
+      {
+        name: 'largerStorage',
+        selected: false,
+        nameText: 'Larger storage',
+        description: 'Extra 1TB of cloud save',
+        pricePerMonth: 2,
+        pricePerYear: 20,
+      },
+      {
+        name: 'customizableProfile',
+        selected: false,
+        nameText: 'Customizable profile',
+        description: 'Custom theme on your profile',
+        pricePerMonth: 2,
+        pricePerYear: 20,
+      },
+    ];
+
+    newSubscriptionInfo.plans = [
+      {
+        name: 'Arcade',
+        pricePerMonth: 9,
+        pricePerYear: 90,
+        iconAddress: 'assets/images/icon-arcade.svg',
+        freeMonthQuantity: 2,
+        selected: false,
+      },
+      {
+        name: 'Advanced',
+        pricePerMonth: 12,
+        pricePerYear: 120,
+        iconAddress: 'assets/images/icon-advanced.svg',
+        freeMonthQuantity: 2,
+        selected: false,
+      },
+      {
+        name: 'Pro',
+        pricePerMonth: 15,
+        pricePerYear: 150,
+        iconAddress: 'assets/images/icon-pro.svg',
+        freeMonthQuantity: 2,
+        selected: false,
+      },
+    ];
+
+    return newSubscriptionInfo;
+  }
   navigateToPlanPage() {
     this.navigateToPage(urls.navigationSequence.planPage.sequenceNumber);
+  }
+
+  resetApplication() {
+    // reset information object
+    this.subscriptionInfo = this.createNewSubscriptionInfo();
+
+    // navigate to the starting page of application
+    this.navigateToPage(0);
   }
 }

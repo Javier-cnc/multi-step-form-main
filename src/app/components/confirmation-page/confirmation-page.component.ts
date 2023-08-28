@@ -22,9 +22,13 @@ export class ConfirmationPageComponent implements IPage {
     return this.terminated;
   }
 
-  constructor(appService: ApplicationBackgroundService) {
+  constructor(private appService: ApplicationBackgroundService) {
     appService.CurrentPage = this;
     appService.CurrentPageIndex =
       urls.navigationSequence.confirmationPage.sequenceNumber;
+  }
+
+  resetPage() {
+    this.appService.resetApplication();
   }
 }

@@ -1,3 +1,5 @@
+@use '../../../variables/colors' as c
+
 .global-container
   display: flex
   justify-content: center
@@ -11,3 +13,21 @@
 
 .description
   text-align: center
+
+.reset-btn
+  border: none
+  padding: 20px
+  border-radius: 10px
+  margin-top: 30px
+  color: c.$white-color
+  background-color: c.$verydark-blue-color
+  cursor: pointer
+
+.reset-btn:hover
+  opacity: 0.8
+
+.reset-btn-container
+  display: flex
+  justify-content: center
+
+
