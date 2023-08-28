@@ -57,3 +57,10 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# used to avoid sass compilation error because of the url path used in
+# background-image: url("assets/images/bg-sidebar-desktop.svg")
+# because initially was working like this:
+# ("/assets/images/bg-sidebar-desktop.svg")
+# but github pages don't load the image using the base path(/multi-step-form-main I define for the project
+src/app/components/assets/images/bg-sidebar-desktop.svg
