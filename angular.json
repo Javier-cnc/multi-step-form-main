@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "baseHref": "/multi-step-form-main",
+            "baseHref": "/multi-step-form-main/",
             "outputPath": "dist/multi-step-form-main",
             "index": "src/index.html",
             "main": "src/main.ts",
